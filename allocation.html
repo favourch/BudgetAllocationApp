@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Budget Analysis | Allocation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="nav-wrapper">Notifications</div>
+<div class="container">
+
+<div class="page-header">
+        <img src="logo.png"> 
+        <input type="submit" name="budget" id="budget" value="CREATE A BUDGET" class="btn btn-info pull-left">
+        <input type="submit" name="allocation" id="allocation" value="ALLOCATE" class="btn btn-info pull-right" style="background-color:#F5F5F5;">
+</div>
+
+<!-- START -->
+<div class="container">
+    <div class="row">
+        <form role="form">
+            <div class="col-lg-12">
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                    <label for="InputName">Budget Title</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Select title" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label for="InputEmail">Enter Amount</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                
+                    <label for="InputMessage">Enter notes(optional)</label>
+                    <div class="input-group">
+                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5"></textarea>
+                        <span class="input-group-addon"></span>
+                    </div><br>
+                </div>
+                <input type="submit" name="submit" id="submit" value="CREATE ALLOCATION" class="btn btn-info pull-right">
+            </div><br>
+        </form>
+     
+    </div>
+    <div class="row">   
+        <div class="col-lg-10 col-md-push-1">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! Message sent.</strong>
+                </div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Registration form - END -->
+
+</div>
+
+</body>
+</html>
