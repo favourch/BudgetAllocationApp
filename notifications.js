@@ -1,3 +1,31 @@
+//calculate the allocations as a percentage of the budget amount
+//calculate the balance of the budget amount
+
+window.onload = function(){
+  greeting();
+  fetchPercentage();
+ // foo();
+}
+
+//fetch the name of the user from localstorage and display it as a greeting on this page 'Hello, user_name'
+function greeting(){
+var user_name = JSON.parse( localStorage.getItem( '_user') );
+document.getElementById("greeting").innerHTML = "hello, " + user_name.firstName;
+}
+
+//fetches the percentages and balances
+function fetchPercentage(){
+  var allocationPercentage= JSON.parse( localStorage.getItem('_allocation'));
+  var budgetBal = JSON.parse(localStorage.getItem('_budget'));
+  var percentageUsed = ((100*_allocation.allocationAmount)/_budget.budgetAmount);
+
+  document.getElementById('percentage').innerHTML = "ojigbiji"
+  document.write = "ojigbiji;
+}
+
+
+
+///////////////////////////////////////////////////////////////////
 window.onload = function(){
   greeting();
 }
@@ -9,7 +37,9 @@ function greeting(){
 
  var nickName = JSON.parse( localStorage.getItem( '_user') );
 
-
+for(d in nickName){
+  console.log(nickName.firstName)
+}
 document.getElementById("greeting").innerHTML = "hello, " + nickName.firstName;
 }
 
@@ -43,17 +73,3 @@ window.location.href = "notifications.html";
 foo();
 
 }}
-
-
-/* ensure only type of number is enetered in the budget amount box */
-function validate(evt) {
-  var theEvent = evt || window.event;
-  var key = theEvent.keyCode || theEvent.which;
-  key = String.fromCharCode( key );
-  var regex = /[0-9]|\./;
-  if( !regex.test(key) ) {
-    theEvent.returnValue = false;
-    if(theEvent.preventDefault) theEvent.preventDefault();
-  }
-}
-
