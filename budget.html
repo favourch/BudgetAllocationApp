@@ -13,17 +13,30 @@
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="nav-wrapper">
-    <span class="notifications"><span class="glyphicon glyphicon-user"></span> Hello, user_name 
-    <span class="glyphicon glyphicon-flag" title="notifications pending"></span>
-</div>
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Hello, [nickname] you have [count] new notifications</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><span class="glyphicon glyphicon-home" style="color:#107994;"></a></li>
+        <li><a href="notifications.html" title="you have new notifications"><span class="glyphicon glyphicon-tags" style="color:#107994;"></a></li>
+        <li><a href="budget.html">Create a Budg.it</a></li> 
+        <li><a href="allocation.html">Allocate</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        
+        <li class="active"><a href="#">Logout</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
 
 <div class="page-header">
-        <img src="logo.png"> 
-        <input type="submit" name="budget" id="budget" value="CREATE A BUDGET" class="btn btn-info pull-left" style="background-color:#F5F5F5;">
-        <input type="submit" name="allocation" id="allocation" value="ALLOCATE" class="btn btn-info pull-right">
+<span class="img-responsive"><img src="logo.png">
+  <h2><strong>Create a new budget</strong></h2>  
 </div>
 
 <!-- START -->
@@ -35,22 +48,41 @@
                 <div class="form-group">
                     <label for="InputName">Budget Title</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Select title" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width:100%;">Pick a name for your budget e.g. January 2015
+                                <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">January 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">February 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">March 2015</a></li>
+                                  <li role="presentation"></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">April 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">May 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">June 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">July 2015</a></li>
+                                  <li role="presentation"></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">August 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">September 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">October 2015</a></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">November 2015</a></li>
+                                  <li role="presentation"></li>
+                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">December 2015</a></li>
+                        </ul>
+                      </div>
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
-                    
                 </div>
                 <div class="form-group">
                     <label for="InputEmail">Enter Amount</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <input type="text" class="form-control" id="InputEmailFirst" name="InputAmount" placeholder="Enter amount e.g. 150000" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-cog"></span></span>
                     </div>
                 </div>
                 
                     <label for="InputMessage">Enter notes(optional)</label>
                     <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5"></textarea>
+                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" placeholder="(optional)"></textarea>
                         <span class="input-group-addon"></span>
                     </div><br>
                 </div>
