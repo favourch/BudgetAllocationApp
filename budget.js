@@ -1,9 +1,8 @@
-var budgetTitle = document.getElementById('InputBudgetName').value;
-var budgetAmount = document.getElementById('InputAmount').value;
-budgetAmount = parseInt(budgetAmount);
+  var counter = 0;
 
 window.onload = function(){
   greeting();
+ // foo();
 }
 
 
@@ -11,9 +10,8 @@ window.onload = function(){
 //fetch the name of the user from localstorage and display it as a greeting on this page 'Hello, user_name'
 function greeting(){
 var user_name = JSON.parse( localStorage.getItem( '_user') );
-for(d in user_name){
-  document.getElementById("greeting").innerHTML = "hello, " + user_name.firstName;
-}}
+document.getElementById("greeting").innerHTML = "hello, " + user_name.firstName;
+}
 
 
 
@@ -21,13 +19,32 @@ for(d in user_name){
 function createBudget(){
 
 // console.log(budgetTitle + ", " + typeof (parseInt(budgetAmount)));
-
-if(budgetTitle === "" || budgetTitle.length < 5){
+var budgetTitle = document.getElementById('InputBudgetName').value;
+var budgetAmount = document.getElementById('InputAmount').value;
+budgetAmount = parseInt(budgetAmount);
+var budgetNotes = document.getElementById('InputMessage').value;
+if(budgetTitle === ""){
   var user_name = JSON.parse( localStorage.getItem( '_user') );
   console.log(user_name.firstName + ", " + "Something just doesnt seem right. Fix it!");
+  var _name_ = user_name.firstName;
+}
+
+// save data to localStorage
+else{
+var _budget = {};
+_budget.activeuser= _name_;
+_budget.budgetTitle= budgetTitle;
+_budget.budgetAmount = budgetAmount;
+_budget.budgetNotes = budgetNotes;
+
+
+
+localStorage.setItem( '_budget', JSON.stringify(_budget) );
+window.location.href = window.location.href;
+
+foo();
+
 }}
-
-
 
 /* ensure only type of number is enetered in the budget amount box */
 function validate(evt) {
@@ -41,5 +58,8 @@ function validate(evt) {
   }
 }
 
-
-
+function foo() {
+  counter = counter + 1;
+  //document.getElementById('counter').innerHTML = ""
+  document.getElementById('counter').innerHTML =counter;
+}
