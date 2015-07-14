@@ -1,4 +1,4 @@
-  var counter = 0;
+var counter = 0;
 
 window.onload = function(){
   greeting();
@@ -40,7 +40,9 @@ _budget.budgetNotes = budgetNotes;
 
 
 localStorage.setItem( '_budget', JSON.stringify(_budget) );
-window.location.href = window.location.href;
+window.location.href = "notifications.html";
+
+
 
 foo();
 

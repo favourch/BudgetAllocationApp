@@ -17,14 +17,33 @@
 
 </head>
 <body>
-
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" id="greeting"></a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><span class="glyphicon glyphicon-home" style="color:#107994;"></a></li>
+        <li><a href="notifications.html" title="you have new notifications" ><span id="counter">0</span> <span class="glyphicon glyphicon-tags" id='dnn'style="color:#107994;"></a></li>
+        <li><a href="budget.html">Create a Budg.it</a></li> 
+        <li><a href="allocation.html">Allocate</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        
+        <li class="active"><a href="index.html">Logout</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
 
 <!-- START -->
     <div class="container">
     <div class="page-header">
     <span class="img-responsive"><img src="logo.png">
     </div>    
-        
+        <h1>YOU HAVE USED UP [percentage] % OF YOUR BUDGET</h1>
+        <h>YOU HAVE [percentage] % LEFT</h3>
     </div>
     
 <script src="script.js"></script>

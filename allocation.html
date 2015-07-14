@@ -17,7 +17,6 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -26,7 +25,7 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="#"><span class="glyphicon glyphicon-home" style="color:#107994;"></a></li>
-        <li><a href="notifications.html" title="you have new notifications"><span class="glyphicon glyphicon-tags" style="color:#107994;"></a></li>
+        <li><a href="notifications.html" title="you have new notifications" ><span id="counter">0</span> <span class="glyphicon glyphicon-tags" id='dnn'style="color:#107994;"></a></li>
         <li><a href="budget.html">Create a Budg.it</a></li> 
         <li><a href="allocation.html">Allocate</a></li>
       </ul>
@@ -40,79 +39,59 @@
 <div class="container">
 
 <div class="page-header">
-<span class="img-responsive"><img src="logo.png">
-  <h2><strong>Add new allocation</strong></h2>  
+<span class="img-responsive"><img src="logo.png" alt="logo">
+  <h2><strong>Create a new allocation</strong></h2>  
 </div>
 
 <!-- START -->
 <div class="container">
-    <div class="row">
-        <form role="form">
-            <div class="col-lg-12">
-                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
-                <div class="form-group">
-                    <label for="InputName">Budget Title</label>
-                    <div class="input-group">
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="width:100%;">Select from existing budget titles e.g. January 2015
-                                <span class="caret"></span></button>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">January 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">February 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">March 2015</a></li>
-                                  <li role="presentation"></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">April 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">May 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">June 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">July 2015</a></li>
-                                  <li role="presentation"></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">August 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">September 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">October 2015</a></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">November 2015</a></li>
-                                  <li role="presentation"></li>
-                                  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">December 2015</a></li>
-                        </ul>
-                      </div>
-                      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                    </div>
-                    
-                </div>
-                <div class="form-group">
-                    <label for="InputEmail">Enter Amount</label>
-                    <div class="input-group">
-                        <input type="email" class="form-control" id="InputEmailFirst" name="InputEmail" placeholder="Enter Email" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
-                </div>
-                
-                    <label for="InputMessage">Enter notes(optional)</label>
-                    <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5"></textarea>
-                        <span class="input-group-addon"></span>
-                    </div><br>
-                </div>
-                <input type="submit" name="submit" id="submit" value="CREATE ALLOCATION" class="btn btn-info pull-right">
-            </div><br>
-        </form>
-     
-    </div>
-    <div class="row">   
+   <div class="row">   
         <div class="col-lg-10 col-md-push-1">
             <div class="col-md-12">
-                <div class="alert alert-success">
+                <div class="hide">
                     <strong><span class="glyphicon glyphicon-ok"></span> Success!.</strong>
                 </div>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger" style="display:none;">
                     <span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>
                 </div>
             </div>
         </div>
+    <div class="row">
+        <div role="form">
+            <div class="col-lg-12">
+               
+                <div class="form-group">
+                   
+                    <label for="InputAllocationName">Allocation title</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="InputAllocationName" name="InputAllocationName" placeholder="Enter title here e.g. sch fees" required>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputAllocationAmt">Enter Amount</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="InputAllocationAmount" name="InputAllocationAmount" placeholder="Enter amount e.g. 150" onkeypress='validate(event)' required >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-cog"></span></span>
+                    </div>
+                </div>
+                
+                    <label for="InputAllocationMessage">Enter notes(optional)</label>
+                    <div class="input-group">
+                        <textarea name="InputAllocationMessage" id="InputAllocationMessage" class="form-control" rows="5" placeholder="(optional)"></textarea>
+                        <span class="input-group-addon"></span>
+                    </div><br>
+                </div>
+                <input type="submit" name="submit" id="submit" value="CREATE BUDGET" class="btn btn-info pull-right" onclick="createAllocation()">
+            </div><br><br>
+        </div><br><br>
+     
+    </div>
+   
     </div>
 </div>
-<script src="allocation.js"></script>
 
-</div>
+<script src="allocation.js"></script>
 
 </body>
 </html>
