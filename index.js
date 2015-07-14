@@ -12,7 +12,7 @@ document.getElementById("btn-signup").addEventListener('click',function() {
   if(userEmail === "" || firstName === "" || lastName === "" || passWord === ""){
 
   //display error
-  console.log('Oops, you just goofed! You must have left something out, try again.')
+  alert(console.log('Oops, you just goofed! You must have left something out, try again.'));
 }
 
 else if(pwdMatch !== passWord){
@@ -31,20 +31,21 @@ _user.passWord = passWord;
 
 localStorage.setItem( '_user', JSON.stringify(_user) );
 
-
+var nickName = JSON.parse( localStorage.getItem( '_user' ) );
 //console.log(firstName);
+//console.log(document.getElementById('greeting').innerHTML = "hello " + firstName);
+
 pageRedirect();
+
+
 }
-  });
-      }
+
+  
+});
+
+}
 
 function pageRedirect(url){
   var url = "budget.html"
   window.location.href = url;
-}
-
-
-
-function signIn()}{
-  
 }
