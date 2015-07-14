@@ -3,22 +3,35 @@
 Project: Budget Allocation App
 */
 
-//Create new budget or allocation
-    document.getElementById("budgetName").addEventListener('blur',function() {
-      if(this.length === ""){
-        console.log("empty");
-      }
+(function(){
+
+//define a user object
+var user_ = function(firstName, lastname,email,password){
+  this.firstName = firstName;
+  this.lastname= lastname;
+  this.email= email;
+  this.password= password;
+
+  //this method stores a new user details as an object containing the user details in localstorage
+  var addUser = function(){
+
+  }
+
+  //this method retrieves user info from localstorage
+  var getUser = function(firstName){
+  var username = localstorage.getItem('firstName');
+  return username;
+  }
+}
+
+if(window.location="budget.html"){
+  var newuser = new user_();
+  newuser.username;
+  document.getElementById('greeting').innerHTML=username;
+}
+
+
 
 });
-
-    document.getElementById("createBudget").addEventListener('click',function() {
-    console.log("Success! New budget created");
-
-    //window.location = "my-dashboard.html";
-  });
-
-    document.getElementById("createAllocation").addEventListener('click',function() {
-    console.log("Success! New allocation created");
-  });
 
    
