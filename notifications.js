@@ -13,17 +13,12 @@ function greeting(){
 
 /* Balances and percentages */
 function fetchBalAndPercentages(){
-  var _calc = JSON.parse( localStorage.getItem('_notifications'));
-  var bud = JSON.parse(localStorage.getItem('_budget'));
-  var alloBal = JSON.parse(localStorage.getItem('_allocation'));
-  var percentageUsed = parseInt((_calc.allocationAmount/bud.budgetAmount) * 100);
-  var balInNaira = _calc.BudgetBal;
+  var budgetBalances = JSON.parse( localStorage.getItem('budget'));
+  var cummBalances = JSON.parse( localStorage.getItem('cummAllocations'));
 
-  console.log(alloBal, "This is alloBal");
-  console.log(percentageUsed, "This is percentageUsed");
-  console.log(balInNaira, "this is balInNaira");
-  console.log(alloBal.oldAllocationAmount, "This is _allocation.oldAllocationAmount..");
-  
+  var percentageUsed = parseInt((cummBalances.bal/budgetBalances.budgetAmount) * 100);
+  var balInNaira = (budgetBalances.budgetAmount-cummBalances.bal);
+
   alertUser("percentUsed","You have used up " + percentageUsed + "% of your budget");
   alertUser("balInNaira","You have &#x20A6 " + balInNaira + " left." );
 }

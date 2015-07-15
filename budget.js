@@ -16,22 +16,26 @@ function createBudget() {
   var budgetNotes = document.getElementById('InputMessage').value;
   if (budgetTitle === "" || isNaN(budgetAmount)) {
     alertUser("alert-msg", "Something just doesn't seem right " + user_name.firstName + " Fix it!")
-    var _name_ = user_name.firstName;
+    
   }
 
   // save data to localStorage
   else {
-    var _budget = {};
-    _budget.activeuser = user_name.firstName;
-    _budget.budgetTitle = budgetTitle;
-    _budget.budgetAmount = budgetAmount;
-    _budget.budgetNotes = budgetNotes;
-    var _notifications = {};
-    _notifications.budgetTitle = budgetTitle;
-    _notifications.budgetAmount = budgetAmount;
-    localStorage.setItem('_budget', JSON.stringify(_budget));
-    localStorage.setItem('_notifications', JSON.stringify(_notifications));
-    window.location.href = "allocation.html";
+    var budget = {};
+    budget.activeuser = user_name.firstName;
+    budget.budgetTitle = budgetTitle;
+    budget.budgetAmount = budgetAmount;
+    budget.budgetNotes = budgetNotes;
+
+    var cummAllocations = {};
+    cummAllocations.bal = 0;
+
+    localStorage.setItem('budget', JSON.stringify(budget));
+    localStorage.setItem('cummAllocations', JSON.stringify(cummAllocations));
+
+    //window.location.href = "allocation.html";
+
+    alertUser("alertMsg","Nice! you just created a budget titled " + budgetTitle + " now go ahead and create allocations.");
   }
   //console.log(_budget);
 }
@@ -52,6 +56,6 @@ function validate(evt) {
 function alertUser(id, msg) {
   var msg = msg;
   var id = id;
-  document.getElementById(id).className = "alert alert-danger";
+  document.getElementById(id).className = "alert alert-success";
   document.getElementById(id).innerHTML = msg;
 }
