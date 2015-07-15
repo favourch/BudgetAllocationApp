@@ -12,11 +12,15 @@ document.getElementById("btn-signup").addEventListener('click',function() {
   if(userEmail === "" || firstName === "" || lastName === "" || passWord === ""){
 
   //display error
-  alert(console.log('Oops, you just goofed! You must have left something out, try again.'));
+  //alert(console.log('Oops, you just goofed! You must have left something out, try again.'));
+  document.getElementById('message').className = "alert alert-danger";
+  document.getElementById('message').innerHTML = "Oops, you just goofed! You must have left something out, try again."
 }
 
 else if(pwdMatch !== passWord){
- console.log('Sparky, your password didnt match, try again.')
+// console.log('Sparky, your password didnt match, try again.')
+document.getElementById('message').className = "alert alert-danger";
+document.getElementById('message').innerHTML = "Sparky, your password didnt match, try again."
 }
 
 else{
@@ -31,7 +35,7 @@ _user.passWord = passWord;
 
 localStorage.setItem( '_user', JSON.stringify(_user) );
 
-var nickName = JSON.parse( localStorage.getItem( '_user' ) );
+//var nickName = JSON.parse( localStorage.getItem( '_user' ) );
 //console.log(firstName);
 //console.log(document.getElementById('greeting').innerHTML = "hello " + firstName);
 
