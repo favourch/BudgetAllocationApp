@@ -58,18 +58,35 @@ document.getElementById("btn-signin").addEventListener('click',function() {
       var _user = JSON.parse( localStorage.getItem( '_user') );
       var _email = _user.userEmail;
       var _password = _user.passWord;
+     
 
       /* match enetered email and password with email and password on localStorage*/
 
-      if(userEmail !== _user && passWord !== _password){
-        document.getElementById('login-alert').className = "alert alert-danger";
-        document.getElementById('login-alert').innerHTML = "Invalid credentials, try again"
-      }else{
+      var emailMatch = false;
+      var pwdMatch = false;
 
-        /* Let this niggar in lol call pageRedirect*/
+      /////////////////////////
+      
+      if(userEmail === _email){
+        emailMatch = true;
+      }else{
+       emailMatch = false;
+      }
+      if(passWord === _password){
+        pwdMatch=true;
+      }else{
+        pwdMatch=false;
+      }
+
+      
+      if(emailMatch && pwdMatch){
 
         pageRedirect();
 
+      }else{
+        /* stay on page*/
+        document.getElementById('login-alert').className = "alert alert-danger";
+        document.getElementById('login-alert').innerHTML = "Invalid credentials, try again"
       }
 
     }
