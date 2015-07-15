@@ -47,13 +47,22 @@ _allocation.activeuser= _name_;
 _allocation.allocationTitle= allocationTitle;
 _allocation.allocationAmount = allocationAmount;
 _allocation.allocationNotes = allocationNotes;
+/* here */
+
+/* calculate */
 
 localStorage.setItem( '_allocation', JSON.stringify(_allocation) );
+
+var budgetBalance = JSON.parse( localStorage.getItem( '_notifications') );
+var runningBal = (budgetBalance.budgetAmount - allocationAmount);
+localStorage.setItem( '_notifications.budgetAmount', JSON.stringify(runningBal) );
+
 window.location.href = "notifications.html";
 
 /* notification counter, not working correcty yet */
+/* code here */
 
-foo();}}
+}}
 
 
 function alertUser(id, msg){

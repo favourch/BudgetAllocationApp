@@ -1,26 +1,21 @@
 //*SignUp, SignIn and Redirect */
 
+document.getElementById("btn-signup").addEventListener("click", signUp);
+document.getElementById("btn-signin").addEventListener("click", signIn);
 
-/*SignUp */
+
 
 function signUp(){
-document.getElementById("btn-signup").addEventListener('click',function() {
-
-  //set the values eneterd in the fields to appropriate variable names
-  /* */
-
-    var userEmail = document.getElementById('email').value;
-    var firstName = document.getElementById('firstName').value;
-    var lastName = document.getElementById('lastName').value;
-    var passWord = document.getElementById('password').value;
-    var pwdMatch = document.getElementById('re-enterpwd').value;
+  var userEmail = document.getElementById('email').value;
+  var firstName = document.getElementById('firstName').value;
+  var lastName = document.getElementById('lastName').value;
+  var passWord = document.getElementById('password').value;
+  var pwdMatch = document.getElementById('re-enterpwd').value;
 
     if(userEmail === "" || firstName === "" || lastName === "" || passWord === ""){
-      document.getElementById('message').className = "alert alert-danger";
-      document.getElementById('message').innerHTML = "You just goofed! You left something out, try again"
+      alertUser("message","You just goofed! You left something out, try again");
     }else if(pwdMatch !== passWord){
-      document.getElementById('message').className = "alert alert-danger";
-      document.getElementById('message').innerHTML = "Sparky, your password didnt match, try again."
+      alertUser("message","Sparky, your password didnt match, try again.")
     }else{
 
     // save user data to localStorage
@@ -34,31 +29,27 @@ document.getElementById("btn-signup").addEventListener('click',function() {
     localStorage.setItem( '_user', JSON.stringify(_user) );
     pageRedirect();
   }
-});
+
 }
 
 /*SignIn */
 
 function signIn(){
-document.getElementById("btn-signin").addEventListener('click',function() {
-
-  //store the values eneterd in the fields to appropriate variable names
-  /* */
-
-    var userEmail = document.getElementById('login-username').value;
-    var passWord = document.getElementById('login-password').value;
-    
+  var userEmail = document.getElementById('login-username').value;
+  var passWord = document.getElementById('login-password').value;
     if(userEmail === "" || passWord === ""){
-      document.getElementById('login-alert').className = "alert alert-danger";
-      document.getElementById('login-alert').innerHTML = "You just goofed! You left something out, try again"
+      alertUser("login-alert", "You just goofed! You left something out, try again")
     }else{
 
       /* retrieve email and password from localStorage */      
+      
+          var _user = JSON.parse( localStorage.getItem( '_user') );
 
-      var _user = JSON.parse( localStorage.getItem( '_user') );
-      var _email = _user.userEmail;
-      var _password = _user.passWord;
-     
+          if(_user !== null && _user !=='undefined'){
+          var _email = _user.userEmail;
+          var _password = _user.passWord;}else{
+          alertUser("allocation-alert","Oops sorry your budget is used up!")
+          }
 
       /* match enetered email and password with email and password on localStorage*/
 
@@ -85,12 +76,11 @@ document.getElementById("btn-signin").addEventListener('click',function() {
 
       }else{
         /* stay on page*/
-        document.getElementById('login-alert').className = "alert alert-danger";
-        document.getElementById('login-alert').innerHTML = "Invalid credentials, try again"
+        alertUser("login-alert","Invalid credentials, try again")
       }
 
     }
-});
+
 }
 
 /* Redirect*/
@@ -98,4 +88,13 @@ document.getElementById("btn-signin").addEventListener('click',function() {
 function pageRedirect(url){
   var url = "budget.html"
   window.location.href = url;
+}
+
+
+/* alert user */
+function alertUser(id, msg){
+  var msg = msg;
+  var id = id;
+  document.getElementById(id).className = "alert alert-danger";
+  document.getElementById(id).innerHTML = msg;
 }

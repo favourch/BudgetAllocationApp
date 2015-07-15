@@ -1,32 +1,31 @@
-var counter = 0;
+//var counter = 0;
 
 window.onload = function(){
   greeting();
+
  // foo();
+
 }
 
-
-
-//fetch the name of the user from localstorage and display it as a greeting on this page 'Hello, user_name'
+//greeting'
 function greeting(){
 var user_name = JSON.parse( localStorage.getItem( '_user') );
 document.getElementById("greeting").innerHTML = "hello, " + user_name.firstName;
 }
 
+document.getElementById("submit").addEventListener("click", createBudget);
 
-
-//instantiate a new budget and pass the title and other relevant detail about the user and amount to localstorage
+//create budget'
 function createBudget(){
-
-// console.log(budgetTitle + ", " + typeof (parseInt(budgetAmount)));
-
 var budgetTitle = document.getElementById('InputBudgetName').value;
 var budgetAmount = document.getElementById('InputAmount').value;
 budgetAmount = parseInt(budgetAmount);
+
 var budgetNotes = document.getElementById('InputMessage').value;
-if(budgetTitle === ""){
+
+if(budgetTitle === "" || isNaN(budgetAmount)){
   var user_name = JSON.parse( localStorage.getItem( '_user') );
-  console.log(user_name.firstName + ", " + "Something just doesnt seem right. Fix it!");
+  alertUser("alert-msg", "Something just doesn't seem right " + user_name.firstName + " Fix it!")
   var _name_ = user_name.firstName;
 }
 
@@ -62,8 +61,15 @@ function validate(evt) {
   }
 }
 
-function foo() {
+/* alert error message to user */
+function alertUser(id, msg){
+  var msg = msg;
+  var id = id;
+  document.getElementById(id).className = "alert alert-danger";
+  document.getElementById(id).innerHTML = msg;
+}
+/* function foo() {
   counter = counter + 1;
   //document.getElementById('counter').innerHTML = ""
   document.getElementById('counter').innerHTML =counter;
-}
+} */
