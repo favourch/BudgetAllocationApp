@@ -1,53 +1,79 @@
-function signUp(){
+//*SignUp, SignIn and Redirect */
 
+
+/*SignUp */
+
+function signUp(){
 document.getElementById("btn-signup").addEventListener('click',function() {
 
-  //check email entered
-  var userEmail = document.getElementById('email').value;
-  var firstName = document.getElementById('firstName').value;
-  var lastName = document.getElementById('lastName').value;
-  var passWord = document.getElementById('password').value;
-  var pwdMatch = document.getElementById('re-enterpwd').value;
+  //set the values eneterd in the fields to appropriate variable names
+  /* */
 
-  if(userEmail === "" || firstName === "" || lastName === "" || passWord === ""){
+    var userEmail = document.getElementById('email').value;
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var passWord = document.getElementById('password').value;
+    var pwdMatch = document.getElementById('re-enterpwd').value;
 
-  //display error
-  //alert(console.log('Oops, you just goofed! You must have left something out, try again.'));
-  document.getElementById('message').className = "alert alert-danger";
-  document.getElementById('message').innerHTML = "Oops, you just goofed! You must have left something out, try again."
-}
+    if(userEmail === "" || firstName === "" || lastName === "" || passWord === ""){
+      document.getElementById('message').className = "alert alert-danger";
+      document.getElementById('message').innerHTML = "You just goofed! You left something out, try again"
+    }else if(pwdMatch !== passWord){
+      document.getElementById('message').className = "alert alert-danger";
+      document.getElementById('message').innerHTML = "Sparky, your password didnt match, try again."
+    }else{
 
-else if(pwdMatch !== passWord){
-// console.log('Sparky, your password didnt match, try again.')
-document.getElementById('message').className = "alert alert-danger";
-document.getElementById('message').innerHTML = "Sparky, your password didnt match, try again."
-}
+    // save user data to localStorage
+    /* */
 
-else{
-  
-// save data to localStorage
-var _user = {};
-_user.userEmail= userEmail;
-_user.firstName = firstName;
-_user.lastName = lastName;
-_user.passWord = passWord;
-
-
-localStorage.setItem( '_user', JSON.stringify(_user) );
-
-//var nickName = JSON.parse( localStorage.getItem( '_user' ) );
-//console.log(firstName);
-//console.log(document.getElementById('greeting').innerHTML = "hello " + firstName);
-
-pageRedirect();
-
-
-}
-
-  
+    var _user = {};
+    _user.userEmail= userEmail;
+    _user.firstName = firstName;
+    _user.lastName = lastName;
+    _user.passWord = passWord;
+    localStorage.setItem( '_user', JSON.stringify(_user) );
+    pageRedirect();
+  }
 });
-
 }
+
+/*SignIn */
+
+function signIn(){
+document.getElementById("btn-signin").addEventListener('click',function() {
+
+  //set the values eneterd in the fields to appropriate variable names
+  /* */
+
+    var userEmail = document.getElementById('login-username').value;
+    var passWord = document.getElementById('login-password').value;
+    
+    if(userEmail === "" || passWord === ""){
+      document.getElementById('login-alert').className = "alert alert-danger";
+      document.getElementById('login-alert').innerHTML = "You just goofed! You left something out, try again"
+    }else if(pwdMatch !== passWord){
+      document.getElementById('message').className = "alert alert-danger";
+      document.getElementById('message').innerHTML = "Sparky, your password didnt match, try again."
+    }else{
+
+    // save user data to localStorage
+    /* */
+
+    var _user = {};
+    _user.userEmail= userEmail;
+    _user.firstName = firstName;
+    _user.lastName = lastName;
+    _user.passWord = passWord;
+    localStorage.setItem( '_user', JSON.stringify(_user) );
+    pageRedirect();
+  }
+});
+}
+
+
+
+
+/* Redirect*/
 
 function pageRedirect(url){
   var url = "budget.html"
