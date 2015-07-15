@@ -1,9 +1,10 @@
-//*SignUp, SignIn and Redirect */
+//*SignUp, SignIn and Redirect and error alerts*/
 
 document.getElementById("btn-signup").addEventListener("click", signUp);
 document.getElementById("btn-signin").addEventListener("click", signIn);
 
 
+/* SignUp */
 
 function signUp(){
   var userEmail = document.getElementById('email').value;
@@ -32,11 +33,13 @@ function signUp(){
 
 }
 
+
 /*SignIn */
 
 function signIn(){
   var userEmail = document.getElementById('login-username').value;
   var passWord = document.getElementById('login-password').value;
+
     if(userEmail === "" || passWord === ""){
       alertUser("login-alert", "You just goofed! You left something out, try again")
     }else{
@@ -48,7 +51,7 @@ function signIn(){
           if(_user !== null && _user !=='undefined'){
           var _email = _user.userEmail;
           var _password = _user.passWord;}else{
-          alertUser("allocation-alert","Oops sorry your budget is used up!")
+          alertUser("login-alert","Oops sorry your budget is used up!")
           }
 
       /* match enetered email and password with email and password on localStorage*/
@@ -82,6 +85,7 @@ function signIn(){
     }
 
 }
+
 
 /* Redirect*/
 
