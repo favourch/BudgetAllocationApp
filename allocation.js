@@ -1,19 +1,34 @@
 window.onload = function(){
   greeting();
+  checkBudgetBalance();
 }
 
+
+/* greeting */
 
 function greeting(){
- // var nickName = JSON.parse( localStorage.getItem( '_user', 'firstName' ) );
-//console.log(_user);
-
- var nickName = JSON.parse( localStorage.getItem( '_user') );
-
-
-document.getElementById("greeting").innerHTML = "hello, " + nickName.firstName;
+  /* retrieve active user's name from LS and display as a greeting */
+  var nickName = JSON.parse( localStorage.getItem( '_user') );
+  document.getElementById("greeting").innerHTML = "hello, " + nickName.firstName;
 }
 
-//instantiate a new allocation and pass the title and other relevant detail about the user and amount to localstorage
+/* */
+/* retrive budget balance from notifications ls */
+/* if the balance < 1 the donot allow further allocations */
+
+function checkBudgetBalance(){
+  var bugBal = JSON.parse( localStorage.getItem( '_notifications') );
+  if(bugBal.budgetAmount < 1){
+    alertUser("allocation-alert","Oops sorry your budget is used up!")
+    document.getElementById('submit').className = "btn btn-hide";
+  }else{
+    document.getElementById("submit").addEventListener("click", createAllocation);
+  }
+
+}
+
+/* */
+
 function createAllocation(){
 var allocationTitle = document.getElementById('InputAllocationName').value;
 var allocationAmount = document.getElementById('InputAllocationAmount').value;
@@ -21,7 +36,7 @@ allocationAmount = parseInt(allocationAmount);
 var allocationNotes = document.getElementById('InputAllocationMessage').value;
 if(allocationTitle === ""){
   var user_name = JSON.parse( localStorage.getItem( '_user') );
-  console.log(user_name.firstName + ", " + "Something just doesnt seem right. Fix it!");
+  alertUser("allocation-alert","Something just doesnt seem right. Fix it!")
   var _name_ = user_name.firstName;
 }
 
@@ -33,16 +48,20 @@ _allocation.allocationTitle= allocationTitle;
 _allocation.allocationAmount = allocationAmount;
 _allocation.allocationNotes = allocationNotes;
 
-
-
 localStorage.setItem( '_allocation', JSON.stringify(_allocation) );
-
 window.location.href = "notifications.html";
 
+/* notification counter, not working correcty yet */
 
-foo();
+foo();}}
 
-}}
+
+function alertUser(id, msg){
+  var msg = msg;
+  var id = id;
+  document.getElementById(id).className = "alert alert-danger";
+  document.getElementById(id).innerHTML = msg;
+}
 
 
 /* ensure only type of number is enetered in the budget amount box */
@@ -56,4 +75,3 @@ function validate(evt) {
     if(theEvent.preventDefault) theEvent.preventDefault();
   }
 }
-

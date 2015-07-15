@@ -19,6 +19,7 @@ document.getElementById("greeting").innerHTML = "hello, " + user_name.firstName;
 function createBudget(){
 
 // console.log(budgetTitle + ", " + typeof (parseInt(budgetAmount)));
+
 var budgetTitle = document.getElementById('InputBudgetName').value;
 var budgetAmount = document.getElementById('InputAmount').value;
 budgetAmount = parseInt(budgetAmount);
@@ -37,12 +38,13 @@ _budget.budgetTitle= budgetTitle;
 _budget.budgetAmount = budgetAmount;
 _budget.budgetNotes = budgetNotes;
 
-
+var _notifications = {};
+_notifications.budgetTitle = budgetTitle;
+_notifications.budgetAmount = budgetAmount;
 
 localStorage.setItem( '_budget', JSON.stringify(_budget) );
+localStorage.setItem( '_notifications', JSON.stringify(_notifications) );
 window.location.href = "notifications.html";
-
-
 
 foo();
 
